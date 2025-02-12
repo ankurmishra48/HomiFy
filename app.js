@@ -16,7 +16,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User.js");
 require('dotenv').config();
-
+const Listing = require("../models/listing");
 const app = express();
 const PORT = 3000;
 
