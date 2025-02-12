@@ -91,7 +91,15 @@ app.use((req, res, next) => {
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 app.use("/", userrouter);
-
+app.get("/", async (req, res) => {
+  try {
+      const allListings = await Listing.find({}); // Fetch listings from MongoDB
+      res.render("index", { allListings }); // Pass listings to EJS template
+  } catch (err) {
+      console.error("Error fetching listings:", err);
+      res.status(500).send("Internal Server Error");
+  }
+});
  
 
 // Handle 404 Errors
