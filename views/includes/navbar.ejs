@@ -1,0 +1,76 @@
+<style>
+  .search-container {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+  }
+
+  .search-box {
+      position: relative;
+      width: 250px; /* Adjust width as needed */
+  }
+
+  .search-box input {
+      width: 100%;
+      padding: 8px 35px 8px 12px; /* Space for the icon */
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      transition: 0.3s;
+  }
+
+  .search-box input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  .search-box button {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #555;
+      font-size: 16px;
+  }
+
+  .search-box button:hover {
+      color: #007bff;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-solid fa-tree"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+              <a class="nav-link active" href="/listings/">Explore</a>
+          </div>
+
+          <!-- Centered Search Box -->
+          <div class="search-container">
+              <div class="search-box">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+              </div>
+          </div>
+
+          <div class="navbar-nav ms-auto">
+              <a class="nav-link active" href="/listings/new">Add Your Home Here</a>
+              <% if(!curUser) { %>
+                  <a class="nav-link active" href="/signup"><b> Signup</b></a>
+                  <a class="nav-link active" href="/login"><b> Login</b></a>
+              <% } %>
+              <% if(curUser) { %>
+                  <a class="nav-link" href="/logout"><b>Logout</b></a>
+              <% } %>
+          </div>
+      </div>
+  </div>
+</nav>

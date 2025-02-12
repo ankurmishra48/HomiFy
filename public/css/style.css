@@ -1,0 +1,106 @@
+body{
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+
+}
+.container{
+    flex: 1;
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+.fa-solid{
+    color: #f1424d;
+}
+.navbar-nav{
+    color: #222222 !important;
+}
+
+/* footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    color: #222222;
+
+}
+.f-info{
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    background-color: #ebebeb;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+
+}
+.f-info{
+    width: 100%;
+    font-size: 1.5rem;
+}
+.f-social{
+    width: 100%;
+    
+}
+.f-info-links{
+    width: 100%;
+}
+
+/* cards */
+.card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100%;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text p{
+font-weight: 400 !important;
+}
+.listingphoto{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: #ebebeb;
+}
+input[type="text"]{
+    width: 100%;
+}
+textarea{
+    width: 100%;
+}
+
+#button1{
+    border: none;
+    background-color: #f1424d;
+}
+#button2{
+    border: none;
+    background-color: #24931c;
+}
+.show-img{
+    height: 50vh;
+}
+.frm{
+    margin-bottom: 4px;
+}
+.btns{
+    display: flex;
+}
+ .btn{
+    background-color: #f1424d !important;
+ }
