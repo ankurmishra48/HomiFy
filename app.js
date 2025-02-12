@@ -29,13 +29,11 @@ app.listen(PORT, () => {
 //const mongoURL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl=process.env.AtlasDbUrl
 
-mongoose
-  .connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.log("❌ MongoDB Connection Error:", err));
+mongoose.connect(process.env.AtlasDbUrl, {
+  useNewUrlParser: true
+})
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.log(" MongoDB Connection Error:", err));
 
 // Set View Engine
 app.set("view engine", "ejs");

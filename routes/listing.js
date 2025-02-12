@@ -17,13 +17,17 @@ const validatelisting=(req,res,next)=>{
     }
   }
 
- // 📌 CRUD Routes for Listings
+ 
+  router.get("/", async (req, res) => {
+    try {
+        const allListings = await Listing.find({});
+        res.render("listings/index", { allListings });
+    } catch (err) {
+        console.error("Error fetching listings:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
-// ✅ Show All Listings
-router.get("/", async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index", { allListings });
-  });
   
   // ✅ Show Create Form
   router.get("/new",isLoggedin, (req, res) => {
