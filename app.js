@@ -107,14 +107,14 @@ app.all("*", (req, res) => {
 });
 
 // Error Handling Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  if (!err.status) err.status = 500;
-  if (!err.message) err.message = "Something went wrong!";
-
-  res.status(err.status);
-  res.render('errors/error', { statusCode: 500, message: "Internal Server Error" });
-
+app.use((req, res, next) => {
+  res.status(404).render('errors/404');
 });
+
+// General error-handling middleware
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).render('errors/error', { err });
+});
+
 
 
