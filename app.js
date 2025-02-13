@@ -108,8 +108,14 @@ app.all("*", (req, res) => {
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Internal Server Error" } = err;
+  if (!err.statusCode) err.statusCode = 500;
   console.error(err.stack);
 
-  res.status(statusCode).render("errors/error", { message, statusCode });
+  // Prevents infinite loop
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  res.status(err.statusCode).render("errors/error", { message: err.message, statusCode: err.statusCode });
 });
+
