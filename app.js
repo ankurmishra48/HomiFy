@@ -108,14 +108,9 @@ app.all("*", (req, res) => {
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
-  if (!err.statusCode) err.statusCode = 500;
   console.error(err.stack);
-
-  // Prevents infinite loop
-  if (res.headersSent) {
-    return next(err);
-  }
-
-  res.status(err.statusCode).render("errors/error", { message: err.message, statusCode: err.statusCode });
+  res.status(err.status || 500);
+  res.render("errors/error", { err });  // ✅ Ensure this matches the correct path
 });
+
 

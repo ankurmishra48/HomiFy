@@ -8,12 +8,12 @@ const { isLoggedin, isOwner } = require("../middleware.js");
 
 // ✅ Fixed Validation Middleware
 const validatelisting = (req, res, next) => {
-    let { error } = listingSchema.validate(req.body);
-    if (error) {
-        let errmsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errmsg); // 🔴 Fix: Corrected error handling
-    }
-    next();
+  let { error } = listingSchema.validate(req.body);
+  if (error) {
+      let errmsg = error.details.map((el) => el.message).join(",");
+      return next(new ExpressError(400, errmsg));  // ✅ Pass error to error handler
+  }
+  next();
 };
 
 // ✅ Show All Listings
