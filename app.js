@@ -113,7 +113,8 @@ app.use((err, req, res, next) => {
   if (!err.message) err.message = "Something went wrong!";
 
   res.status(err.status);
-  res.render("errors/error", { err });
+  res.render('errors/error', { statusCode: 500, message: "Internal Server Error" });
+
 });
 
 
