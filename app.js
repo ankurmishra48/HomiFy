@@ -109,8 +109,11 @@ app.all("*", (req, res) => {
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(err.status || 500);
-  res.render("errors/error", { err });  // ✅ Ensure this matches the correct path
+  if (!err.status) err.status = 500;
+  if (!err.message) err.message = "Something went wrong!";
+
+  res.status(err.status);
+  res.render("errors/error", { err });
 });
 
 
